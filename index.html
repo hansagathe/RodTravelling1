@@ -51,7 +51,7 @@
         </article>
 
         <article class="place-card">
-          <img src="images/culture.jpg" alt="culture illustration">
+          <img src="images/culture.jpg" alt="culture illustration"height="245">
           <div class="place-card-body">
             <h2 class="place-name">Culture</h2>
             <a href="culture.html" class="btn btn-primary">Show more</a>
@@ -74,37 +74,5 @@
 <footer class="footer">
   <p>© 2025 RodTravel. All rights reserved.</p>
 </footer>
-
-<!-- ================= JAVASCRIPT ================= -->
-<script>
-  /* 🔹 Active navigation highlight */
-  const navLinks = document.querySelectorAll(".nav-link");
-  navLinks.forEach(link => {
-    if (link.href === window.location.href) {
-      link.classList.add("nav-link--active");
-    }
-  });
-
-  /* 🔹 Scroll animation for cards */
-  const cards = document.querySelectorAll(".place-card");
-
-  function revealCards() {
-    cards.forEach(card => {
-      const position = card.getBoundingClientRect().top;
-      if (position < window.innerHeight - 100) {
-        card.classList.add("show");
-      }
-    });
-  }
-
-  window.addEventListener("scroll", revealCards);
-  revealCards(); // run once on load
-
-  /* 🔹 Welcome popup (optional) */
-  setTimeout(() => {
-    console.log("Welcome to RodTravel!");
-  }, 3000);
-</script>
-
 </body>
 </html>
