@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RodTravel | Contact</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container brand">
+
+    <div class="site-title">RodTravel</div>
+
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger">&#9776;</label>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="destination.html" class="nav-link">Destination</a></li>
+        <li><a href="Contact.html" class="nav-link nav-link--active">Contact</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="culture.html" class="nav-link">Culture</a></li>
+        <li><a href="hotels.html" class="nav-link">Hotels</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<!-- CONTACT FORM -->
+<div class="responsive-form">
+  <h2>Contact Us</h2>
+
+  <form id="contactForm">
+    <label for="name">Name</label>
+    <input type="text" id="name" placeholder="Your name">
+    <small class="error"></small>
+
+    <label for="email">Email</label>
+    <input type="text" id="email" placeholder="Your email address">
+    <small class="error"></small>
+
+    <label for="message">Message</label>
+    <textarea id="message" placeholder="Write something..."></textarea>
+    <small class="error"></small>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+<!-- ================= CSS (FORM + FIXES) ================= -->
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  /* FORCE HEADER LAYOUT */
+  .site-header .container.brand {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hamburger {
+    margin-left: auto;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  .responsive-form {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 6px;
+    border: 2px solid #04AA6D;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  input, textarea {
+    padding: 12px;
+    margin-top: 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+
+  textarea {
+    height: 150px;
+    resize: none;
+  }
+
+  input[type=submit] {
+    margin-top: 20px;
+    background-color: #04AA6D;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  .error {
+    color: red;
+    font-size: 14px;
+    height: 16px;
+  }
+</style>
+
+<!-- ================= JAVASCRIPT VALIDATION ================= -->
+<script>
+  const form = document.getElementById("contactForm");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let valid = true;
+
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const message = document.getElementById("message");
+
+    clearErrors();
+
+    if (name.value.trim() === "") {
+      showError(name, "Name is required");
+      valid = false;
+    }
+
+    if (!validateEmail(email.value)) {
+      showError(email, "Enter a valid email address");
+      valid = false;
+    }
+
+    if (message.value.trim().length < 10) {
+      showError(message, "Message must be at least 10 characters");
+      valid = false;
+    }
+
+    if (valid) {
+      alert("Message sent successfully!");
+      form.reset();
+    }
+  });
+
+  function showError(input, message) {
+    const error = input.nextElementSibling;
+    error.textContent = message;
+  }
+
+  function clearErrors() {
+    document.querySelectorAll(".error").forEach(e => e.textContent = "");
+  }
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+</script>
+
+</body>
+</html>
